@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 
 /**
  *
- * @author Khaled
+ * @author R4YL0
  */
 
 public class Masnip {

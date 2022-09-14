@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Khaled
+ * @author R4YL0
  */
 
 public class SpaceInvaders extends JPanel  {

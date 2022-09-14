@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 
 /**
  *
- * @author Khaled
+ * @author R4YL0
  */
 
 public class CometSplit {
