@@ -1,6 +1,6 @@
 # Space Invaders Project
 
-This is a mini Game project, which started through a class assignment. Nowadays it is meant as a sideproject to use 
+This is a mini Game project, which started through a class assignment. Nowadays it is meant as a side project to use 
 the Java knowledge acquired through the university studies.
 
 ### Folder Structure
