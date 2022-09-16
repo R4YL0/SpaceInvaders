@@ -11,7 +11,6 @@ import java.awt.Rectangle;
 
 public class Ammo {
     int x_now; int y_now;
-    //int x; int y;
     SpaceInvaders game;
     
     public Ammo(SpaceInvaders game, int x, int y) {
