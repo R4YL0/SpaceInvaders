@@ -1,8 +1,9 @@
-## Getting Started
+# Space Invaders Project
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+This is a mini Game project, which started through a class assignment. Nowadays it is meant as a sideproject to use 
+the Java knowledge acquired through the university studies.
 
-## Folder Structure
+### Folder Structure
 
 The workspace contains two folders by default, where:
 
