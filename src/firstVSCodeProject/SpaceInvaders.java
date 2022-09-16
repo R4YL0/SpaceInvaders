@@ -25,7 +25,7 @@ public class SpaceInvaders extends JPanel  {
     UI score; int points;
     int height = 600; int width = 400;
     int x = (width/2) - 28; int y = height - (height/4);
-    int[] b = new int[4]; int[] hp = new int[4];
+    //int[] b = new int[4]; int[] hp = new int[4];
     boolean[] comets = new boolean[ccnt];
 
     public SpaceInvaders() {

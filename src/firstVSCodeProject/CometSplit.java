@@ -30,8 +30,10 @@ public class CometSplit {
         if(collision2())
             { game.gameOver(); }
         for(int count = 0; count < game.ccnt; count++) {
-            if(game.comets[count] && this == game.split[count])
-                { wait = false; }
+            if(game.comets[count] && this == game.split[count]) {
+                wait = false;
+                return;
+            }
         }
         if(x<-50)
             { x = 400; }

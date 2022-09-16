@@ -22,7 +22,7 @@ public class Masnip {
     public void move() {
         if(dx != 0 || dy != 0) {
             for(int k = 0;k<=3;k++) {
-                if((xPoints[k] > 0 + (14*k % 42) && dx<0) || (xPoints[k] < 400 - 42 + (14*k % 42) && dx>0))
+                if((xPoints[k] > (14*k % 42) && dx<0) || (xPoints[k] < 400 - 42 + (14*k % 42) && dx>0))
                     { xPoints[k] = xPoints[k] + dx; }
                 yPoints[k] = yPoints[k] + dy;
             }
@@ -31,13 +31,13 @@ public class Masnip {
 
     public void keyReleased(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_LEFT && xPoints[0]>0 && dx == -2)
-            { dx = dx + 2; }
+            { dx = 0; }
         if(e.getKeyCode() == KeyEvent.VK_RIGHT && xPoints[2]<400 && dx == 2)
-            { dx = dx - 2; }
+            { dx = 0; }
         if(e.getKeyCode() == KeyEvent.VK_UP && dy == -2)
-            { dy = dy + 2; }
+            { dy = 0; }
         if(e.getKeyCode() == KeyEvent.VK_DOWN && dy == 2)
-            { dy = dy - 2; }
+            { dy = 0; }
     }
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_LEFT && xPoints[0]>0)
