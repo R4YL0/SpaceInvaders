@@ -58,6 +58,12 @@ public class CometSplit {
                 split = true;
                 game.ammo[count].x_now = 0; game.ammo[count].y_now = 0;
                 wait = true;
+                game.score.score(20);
+                for(int count2 = 0; count2 < game.ccnt; count2++) {
+                    if (split && game.comet[count2].split) {
+                        game.score.score(100);
+                    }
+                }
                 break;
             }
         }

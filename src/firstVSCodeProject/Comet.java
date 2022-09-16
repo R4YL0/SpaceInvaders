@@ -66,12 +66,19 @@ public class Comet {
                 if(this == game.comet[count])
                     { setup(game.split[count]); }
             }
+            game.score.score(50);
             return;
         }
             durchmesser = durchmesser * 2;
             split = true;
             wait = true;
-            game.score.score();
+            game.score.score(20);
+            for(int count = 0; count < game.ccnt; count++) {
+                if(this == game.comet[count] && game.split[count].split) {
+                    game.score.score(100);
+                    return;
+                }
+            }
     }
     
     public void setup(CometSplit cometSplit) {
