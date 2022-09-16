@@ -56,11 +56,11 @@ public class Comet {
     public void split() {
         if(split) {
             durchmesser = durchmesser/2;
+            dy = dy/2;
             if(dx==0)
                 { dx = Math.random(); }
             else 
                 { dx = dx/2; }
-            dy = dy/2;
             split = false;
             for(int count = 0; count < game.ccnt; count++) {
                 if(this == game.comet[count])

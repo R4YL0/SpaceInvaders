@@ -50,7 +50,7 @@ public class SpaceInvaders extends JPanel  {
                 if(e.getKeyCode() == KeyEvent.VK_UP)
                     { mainship.keyReleased(e); }
                 if(e.getKeyCode() == KeyEvent.VK_DOWN)
-                    { mainship.keyReleased(e); } 
+                    { mainship.keyReleased(e); }
             }   
             //Taste gedrückt lassen
             public void keyPressed(KeyEvent e) {
