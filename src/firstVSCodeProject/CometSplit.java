@@ -64,7 +64,7 @@ public class CometSplit {
                         game.score.score(100);
                     }
                 }
-                /*break;*/ return split;
+                break;
             }
         }
         return split;

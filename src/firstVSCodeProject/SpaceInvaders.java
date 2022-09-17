@@ -17,7 +17,9 @@ import javax.swing.JPanel;
 public class SpaceInvaders extends JPanel  {
     int acnt = 5;
     int ccnt = 2;
+    int ecnt = 1;
     MainShip mainship;
+    EnemyShip enemyship[] = new EnemyShip[ecnt];
     Comet[] comet = new Comet[ccnt];
     CometSplit[] split = new CometSplit[ccnt];
     Ammo[] ammo = new Ammo[acnt];
@@ -37,6 +39,8 @@ public class SpaceInvaders extends JPanel  {
         }
         for(int count = 0; count < acnt; count++) 
             { ammo[count] = new Ammo(this,0,0); }
+        for(int count = 0; count < ecnt; count++)
+            { enemyship[count] = new EnemyShip(this); }
         setFocusable(true);
         addKeyListener(new KeyListener() {
             //gedrückte Taste loslassen
@@ -91,6 +95,8 @@ public class SpaceInvaders extends JPanel  {
         mainship.move();
         for(int count = 0; count < acnt; count++) 
             { ammo[count].move(); }
+        for(int count = 0; count < ecnt; count++)
+            { enemyship[count].move(); }
     }
 
     public void paint(Graphics g) {
@@ -102,6 +108,8 @@ public class SpaceInvaders extends JPanel  {
             { comet[count].paint(g2d); split[count].paint(g2d); }
         for(int count = 0; count < acnt; count++) 
             { ammo[count].paint(g2d); }
+        for(int count = 0; count < ecnt; count++)
+            { enemyship[count].paint(g2d); }
     }
     
     public void gameOver() {
