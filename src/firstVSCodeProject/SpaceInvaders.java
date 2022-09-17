@@ -11,26 +11,24 @@ import javax.swing.JPanel;
 //import java.awt.geom.Area;
 
 /**
- *
  * @author R4YL0
  */
 
 public class SpaceInvaders extends JPanel  {
     int acnt = 5;
     int ccnt = 2;
-    Masnip mainship;
+    MainShip mainship;
     Comet[] comet = new Comet[ccnt];
     CometSplit[] split = new CometSplit[ccnt];
     Ammo[] ammo = new Ammo[acnt];
     UI score; int points;
     int height = 600; int width = 400;
     int x = (width/2) - 28; int y = height - (height/4);
-    //int[] b = new int[4]; int[] hp = new int[4];
     boolean[] comets = new boolean[ccnt];
 
     public SpaceInvaders() {
         setSize(width,height);
-        mainship = new Masnip(this,x,y);
+        mainship = new MainShip(this,x,y);
         score = new UI(this);
         for(int count = 0; count < ccnt; count++) {
             comet[count] = new Comet(this);
@@ -108,6 +106,7 @@ public class SpaceInvaders extends JPanel  {
     
     public void gameOver() {
         JOptionPane.showMessageDialog(this, "Points: " + points,"Game Over",JOptionPane.YES_NO_OPTION);
+        System.out.print("Total: " + points + " Points.");
         System.exit(ABORT);
     }
 }

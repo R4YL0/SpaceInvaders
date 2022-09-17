@@ -4,16 +4,15 @@ import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
 /**
- *
  * @author R4YL0
  */
 
-public class Masnip {
+public class MainShip {
     int[] xPoints = new int[4]; int[] yPoints = new int[4];
     int dx; int dy;
     SpaceInvaders game;
 
-    public Masnip(SpaceInvaders game, int x, int y) {
+    public MainShip(SpaceInvaders game, int x, int y) {
         this.game = game;
         xPoints[0] = x; xPoints[1] = x+14; xPoints[2] = x+28; xPoints[3] = x;
         yPoints[0] = y; yPoints[1] = y-28; yPoints[2] = y; yPoints[3] = y;

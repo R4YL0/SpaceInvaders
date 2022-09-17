@@ -4,7 +4,6 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 /**
- *
  * @author R4YL0
  */
 
@@ -30,7 +29,8 @@ public class CometSplit {
         if(collision2())
             { game.gameOver(); }
         for(int count = 0; count < game.ccnt; count++) {
-            if(game.comets[count] && this == game.split[count]) {
+            if(this == game.split[count] && game.comets[count]) {
+                game.comet[count].dx = Math.random()*4 - 2; game.comet[count].dy = Math.random()*2/Math.sqrt(game.ccnt) + 1;
                 wait = false;
                 return;
             }
@@ -64,7 +64,7 @@ public class CometSplit {
                         game.score.score(100);
                     }
                 }
-                break;
+                /*break;*/ return split;
             }
         }
         return split;

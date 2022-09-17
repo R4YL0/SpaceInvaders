@@ -1,7 +1,6 @@
 package firstVSCodeProject;
 
 /**
- *
  * @author R4YL0
  */
 

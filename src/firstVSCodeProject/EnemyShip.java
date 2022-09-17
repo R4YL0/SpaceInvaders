@@ -1,10 +1,9 @@
 package firstVSCodeProject;
 
 /**
- *
  * @author R4YL0
  */
 
-public class Mysneip {
+public class EnemyShip {
     
 }
