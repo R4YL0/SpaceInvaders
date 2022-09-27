@@ -9,7 +9,7 @@ import java.awt.Rectangle;
 
 public class EnemyShip {
     int[] xPoints = new int[4]; int[] yPoints = new int[4];
-    int x = (int) Math.floor(Math.random()*370+15); int y = 0;
+    int x = (int) Math.floor(Math.random()*370+15); int y;
     int dy = 2;
     SpaceInvaders game;
 
@@ -20,21 +20,23 @@ public class EnemyShip {
     }
 
     public void move() {
-        y = y+dy;
+        for(int k = 0;k<=3;k++) {
+            yPoints[k] = yPoints[k] + dy;
+        }
         if(collision1()) {
             x = (int) Math.floor(Math.random()*370+15); y = -50;
+            xPoints[0] = x; xPoints[1] = x-14; xPoints[2] = x-28; xPoints[3] = x;
+            yPoints[0] = y; yPoints[1] = y+28; yPoints[2] = y; yPoints[3] = y;
         }
 
-        /*for(int count = 0; count < game.ecnt; count++) {
-            if(this == game.enemyship[count]) {
-                dy = *//*(int)Math.random()*2/Math.sqrt(game.ecnt) +*//* 2;
-            }
-        }*/
         if(collision2())
         { game.gameOver(); }
 
-        if(y>575)
-        { x = (int) Math.floor(Math.random()*370+15); y = -50; }
+        if(y>575) {
+            x = (int) Math.floor(Math.random()*370+15); y = -50;
+            xPoints[0] = x; xPoints[1] = x-14; xPoints[2] = x-28; xPoints[3] = x;
+            yPoints[0] = y; yPoints[1] = y+28; yPoints[2] = y; yPoints[3] = y;
+        }
     }
 
     public void paint(Graphics2D g2d)
