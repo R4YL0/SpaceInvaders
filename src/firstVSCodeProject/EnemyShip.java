@@ -10,7 +10,7 @@ import java.awt.Rectangle;
 public class EnemyShip {
     int[] xPoints = new int[4]; int[] yPoints = new int[4];
     int x = (int) Math.floor(Math.random()*370+15); int y;
-    int dy = 2;
+    int dy = 1;
     SpaceInvaders game;
 
     public EnemyShip(SpaceInvaders game) {
@@ -32,7 +32,7 @@ public class EnemyShip {
         if(collision2())
         { game.gameOver(); }
 
-        if(y>575) {
+        if(yPoints[1]>575) {
             x = (int) Math.floor(Math.random()*370+15); y = -50;
             xPoints[0] = x; xPoints[1] = x-14; xPoints[2] = x-28; xPoints[3] = x;
             yPoints[0] = y; yPoints[1] = y+28; yPoints[2] = y; yPoints[3] = y;
@@ -42,10 +42,10 @@ public class EnemyShip {
     public void paint(Graphics2D g2d)
     { g2d.fillPolygon(xPoints, yPoints, 3); }
     public Rectangle getBounds()
-    { return new Rectangle(xPoints[0],yPoints[0],28,28); }
+    { return new Rectangle(xPoints[2],yPoints[0],28,28); }
 
     public boolean collision1() {
-        for(int count = 0; count < game.ecnt ; count++) {
+        for(int count = 0; count < game.acnt ; count++) {
             if(game.ammo[count].getBounds().intersects(getBounds())) {
                 game.ammo[count].x_now = 0; game.ammo[count].y_now = 0;
                 game.score.score(200);
