@@ -16,8 +16,8 @@ import javax.swing.JPanel;
 
 public class SpaceInvaders extends JPanel  {
     int acnt = 5;
-    int ccnt = 2;
-    int ecnt = 1;
+    int ccnt = 0;
+    int ecnt = 0;
     MainShip mainship;
     EnemyShip enemyship[] = new EnemyShip[ecnt];
     Comet[] comet = new Comet[ccnt];
@@ -38,22 +38,24 @@ public class SpaceInvaders extends JPanel  {
             comets[count] = false;
         }
         for(int count = 0; count < acnt; count++) 
-            { ammo[count] = new Ammo(this,0,0); }
+            ammo[count] = new Ammo(this,0,0);
         for(int count = 0; count < ecnt; count++)
-            { enemyship[count] = new EnemyShip(this); }
+            enemyship[count] = new EnemyShip(this);
         setFocusable(true);
         addKeyListener(new KeyListener() {
             //gedrückte Taste loslassen
             public void keyReleased(KeyEvent e) {
                 if(e.getKeyCode() == KeyEvent.VK_LEFT)
-                    { mainship.keyReleased(e); }
+                    mainship.keyReleased(e);
                 if(e.getKeyCode() == KeyEvent.VK_RIGHT)
-                    { mainship.keyReleased(e); }
+                    mainship.keyReleased(e);
                 if(e.getKeyCode() == KeyEvent.VK_UP)
-                    { mainship.keyReleased(e); }
+                    mainship.keyReleased(e);
                 if(e.getKeyCode() == KeyEvent.VK_DOWN)
-                    { mainship.keyReleased(e); }
-            }   
+                    mainship.keyReleased(e);
+                if(e.getKeyCode() == KeyEvent.VK_SHIFT || e.getKeyCode() == KeyEvent.VK_CONTROL)
+                    mainship.keyReleased(e);
+            }
             //Taste gedrückt lassen
             public void keyPressed(KeyEvent e) {
                 mainship.keyPressed(e);
@@ -64,7 +66,7 @@ public class SpaceInvaders extends JPanel  {
                     }
                 }
                 if(e.getKeyCode() == KeyEvent.VK_ESCAPE)
-                    { System.exit(ABORT); }
+                    System.exit(ABORT);
             }
             
             public void keyTyped(KeyEvent e) {}
@@ -87,16 +89,16 @@ public class SpaceInvaders extends JPanel  {
     public void move() {
         for(int count = 0; count < ccnt; count++) {
             if(comet[count].wait && split[count].wait)
-                { comets[count] = true; }
+                comets[count] = true;
             else
-                { comets[count] = false; }
+                comets[count] = false;
             comet[count].move(); split[count].move();
         }
         mainship.move();
         for(int count = 0; count < acnt; count++) 
-            { ammo[count].move(); }
+            ammo[count].move();
         for(int count = 0; count < ecnt; count++)
-            { enemyship[count].move(); }
+            enemyship[count].move();
     }
 
     public void paint(Graphics g) {
@@ -105,11 +107,11 @@ public class SpaceInvaders extends JPanel  {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
         mainship.paint(g2d);
         for(int count = 0; count < ccnt; count++)
-            { comet[count].paint(g2d); split[count].paint(g2d); }
+        { comet[count].paint(g2d); split[count].paint(g2d); }
         for(int count = 0; count < acnt; count++) 
-            { ammo[count].paint(g2d); }
+            ammo[count].paint(g2d);
         for(int count = 0; count < ecnt; count++)
-            { enemyship[count].paint(g2d); }
+            enemyship[count].paint(g2d);
     }
     
     public void gameOver() {

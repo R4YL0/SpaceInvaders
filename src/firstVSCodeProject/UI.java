@@ -11,5 +11,5 @@ public class UI {
     public void score(int point) {
         game.points += point;
         System.out.println("+ " + point + " Points.");
-        }
+    }
 }

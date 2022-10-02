@@ -20,17 +20,16 @@ public class EnemyShip {
     }
 
     public void move() {
-        for(int k = 0;k<=3;k++) {
+        for(int k = 0;k<=3;k++)
             yPoints[k] = yPoints[k] + dy;
-        }
+
         if(collision1()) {
             x = (int) Math.floor(Math.random()*370+15); y = -50;
             xPoints[0] = x; xPoints[1] = x-14; xPoints[2] = x-28; xPoints[3] = x;
             yPoints[0] = y; yPoints[1] = y+28; yPoints[2] = y; yPoints[3] = y;
         }
-
         if(collision2())
-        { game.gameOver(); }
+            game.gameOver();
 
         if(yPoints[1]>575) {
             x = (int) Math.floor(Math.random()*370+15); y = -50;
