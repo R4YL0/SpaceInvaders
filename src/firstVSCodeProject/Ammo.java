@@ -22,7 +22,7 @@ public class Ammo {
 
     public void keyPressed(KeyEvent e, int a, int b) {
         if(e.getKeyCode() == KeyEvent.VK_SPACE && y_now <= 0)
-            { x_now = a-2; y_now = b; }
+            x_now = a-2; y_now = b;
     }
 
     public void paint(Graphics2D g2d)

@@ -25,7 +25,7 @@ public class Comet {
             dx = 0; dy = 0;
         }
         else
-            { x = x+dx; y = y+dy; }
+            x = x+dx; y = y+dy;
         for(int count = 0; count < game.ccnt; count++) {
             if(this == game.comet[count] && game.comets[count]) {
                 dx = Math.random()*4 - 2; dy = Math.random()*2/Math.sqrt(game.ccnt) + 1;
@@ -33,12 +33,12 @@ public class Comet {
             }
         }
         if(collision2())
-        { game.gameOver(); }
+            game.gameOver();
 
         if(x<-50)
-        { x = 400; }
+            x = 400;
         if(x>400)
-        { x = -50; }
+            x = -50;
         if(y>575) {
             if(!split) {
                 durchmesser = durchmesser *2;
@@ -57,13 +57,13 @@ public class Comet {
             durchmesser = durchmesser/2;
             dy = dy/2;
             if(dx==0)
-                { dx = Math.random(); }
+                dx = Math.random();
             else 
-                { dx = dx/2; }
+                dx = dx/2;
             split = false;
             for(int count = 0; count < game.ccnt; count++) {
                 if(this == game.comet[count])
-                    { setup(game.split[count]); }
+                    setup(game.split[count]);
             }
             game.score.score(50);
             return;

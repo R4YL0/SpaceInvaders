@@ -23,11 +23,11 @@ public class CometSplit {
             x = -20; y = -20;
             dx = 0; dy = 0;
         }
-        else {
+        else
             x = x+dx; y = y+dy;
-        }
         if(collision2())
-            { game.gameOver(); }
+            game.gameOver();
+
         for(int count = 0; count < game.ccnt; count++) {
             if(this == game.split[count] && game.comets[count]) {
                 game.comet[count].dx = Math.random()*4 - 2; game.comet[count].dy = Math.random()*2/Math.sqrt(game.ccnt) + 1;
@@ -36,9 +36,9 @@ public class CometSplit {
             }
         }
         if(x<-50)
-            { x = 400; }
+            x = 400;
         if(x>400)
-            { x = -50; }
+            x = -50;
         if(y>575) {
             x = -20; y = -20;
             dx = 0; dy = 0;
@@ -60,9 +60,8 @@ public class CometSplit {
                 wait = true;
                 game.score.score(20);
                 for(int count2 = 0; count2 < game.ccnt; count2++) {
-                    if (split && game.comet[count2].split) {
+                    if (split && game.comet[count2].split)
                         game.score.score(100);
-                    }
                 }
                 break;
             }
