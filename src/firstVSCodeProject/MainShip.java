@@ -32,13 +32,13 @@ public class MainShip {
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SHIFT || e.getKeyCode() == KeyEvent.VK_CONTROL)
             speed = 2;
-        if(e.getKeyCode() == KeyEvent.VK_LEFT && xPoints[0]>-10 && dx == -2)
+        if(e.getKeyCode() == KeyEvent.VK_LEFT && xPoints[0]>-10 && dx == -1)
             dx = 0;
-        if(e.getKeyCode() == KeyEvent.VK_RIGHT && xPoints[2]<410 && dx == 2)
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT && xPoints[2]<410 && dx == 1)
             dx = 0;
-        if(e.getKeyCode() == KeyEvent.VK_UP && dy == -2)
+        if(e.getKeyCode() == KeyEvent.VK_UP && dy == -1)
             dy = 0;
-        if(e.getKeyCode() == KeyEvent.VK_DOWN && dy == 2)
+        if(e.getKeyCode() == KeyEvent.VK_DOWN && dy == 1)
             dy = 0;
     }
     public void keyPressed(KeyEvent e) {
