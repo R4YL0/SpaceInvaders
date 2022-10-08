@@ -22,9 +22,13 @@ public class MainShip {
     public void move() {
         if(dx != 0 || dy != 0) {
             for(int k = 0;k<=3;k++) {
+                int yChange = 0;
                 if((xPoints[k] > (14*k % 42)-10 && dx<0) || (xPoints[k] < 410 - 42 + (14*k % 42) && dx>0))
                     xPoints[k] = xPoints[k] + dx*speed;
-                yPoints[k] = yPoints[k] + dy*speed;
+                if(k == 1)
+                    yChange = -28;
+                if((yPoints[k] > 28 + yChange && dy<0) || ((yPoints[k] < 600 - 40 + yChange) && dy>0))
+                    yPoints[k] = yPoints[k] + dy*speed;
             }
         }
     }
@@ -36,9 +40,9 @@ public class MainShip {
             dx = 0;
         if(e.getKeyCode() == KeyEvent.VK_RIGHT && xPoints[2]<410 && dx == 1)
             dx = 0;
-        if(e.getKeyCode() == KeyEvent.VK_UP && dy == -1)
+        if(e.getKeyCode() == KeyEvent.VK_UP && yPoints[1]>0 && dy == -1)
             dy = 0;
-        if(e.getKeyCode() == KeyEvent.VK_DOWN && dy == 1)
+        if(e.getKeyCode() == KeyEvent.VK_DOWN && yPoints[0]<600 && dy == 1)
             dy = 0;
     }
     public void keyPressed(KeyEvent e) {

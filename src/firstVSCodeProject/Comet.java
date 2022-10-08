@@ -13,11 +13,13 @@ public class Comet {
     double dx;  double dy;
     boolean split = true;
     boolean wait = false;
+    boolean cometcollision = false;
+    int collisionInt;
 
     public Comet(SpaceInvaders game)
     { this.game = game;
-        dx = Math.random()*4 - 2;
-        dy = Math.random()*2/Math.sqrt(game.ccnt) + 1;
+        dx = Math.random() * 4 - 2;
+        dy = Math.random() * 2 / Math.sqrt(game.ccnt) + 1;
     }
     public void move() {
         if(collision1()) {
@@ -34,6 +36,19 @@ public class Comet {
         }
         if(collision2())
             game.gameOver();
+        if(collision3()) {
+            if(game.comet[collisionInt].dx*dx < 0)
+                dx = -dx;
+            if (x - game.comet[collisionInt].x > 5) {
+                if (!game.comet[collisionInt].cometcollision) {
+                    cometcollision = true;
+                    y = y + (Math.abs(y-game.comet[collisionInt].y)-durchmesser)/5;
+                }
+            }
+        }
+        else {
+            cometcollision = false;
+        }
 
         if(x<-50)
             x = 400;
@@ -106,4 +121,13 @@ public class Comet {
     }
     public boolean collision2()
     { return game.mainship.getBounds().intersects(getBounds()); }
+    public boolean collision3() {
+        for(int i = 0; i< game.ccnt; i++) {
+            if(game.comet[i] != this && game.comet[i].getBounds().intersects(getBounds())) {
+                collisionInt = i;
+                return true;
+            }
+        }
+        return false;
+    }
 }

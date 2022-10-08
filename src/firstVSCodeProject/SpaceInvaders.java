@@ -16,13 +16,14 @@ import javax.swing.JPanel;
 
 public class SpaceInvaders extends JPanel  {
     int acnt = 5;
-    int ccnt = 3;
-    int ecnt = 1;
+    int ccnt = 7;
+    int ecnt = 0;
     MainShip mainship;
     EnemyShip enemyship[] = new EnemyShip[ecnt];
     Comet[] comet = new Comet[ccnt];
     CometSplit[] split = new CometSplit[ccnt];
     Ammo[] ammo = new Ammo[acnt];
+    EnemyAmmo[] enemyAmmo = new EnemyAmmo[acnt];
     UI score; int points;
     int height = 600; int width = 400;
     int x = (width/2) - 28; int y = height - (height/4);
@@ -37,8 +38,10 @@ public class SpaceInvaders extends JPanel  {
             split[count] = new CometSplit(this);
             comets[count] = false;
         }
-        for(int count = 0; count < acnt; count++) 
-            ammo[count] = new Ammo(this,0,0);
+        for(int count = 0; count < acnt; count++) {
+            ammo[count] = new Ammo(this, 0, 0);
+            enemyAmmo[count] = new EnemyAmmo(this, 600, -20);
+        }
         for(int count = 0; count < ecnt; count++)
             enemyship[count] = new EnemyShip(this);
         setFocusable(true);
@@ -95,8 +98,10 @@ public class SpaceInvaders extends JPanel  {
             comet[count].move(); split[count].move();
         }
         mainship.move();
-        for(int count = 0; count < acnt; count++) 
+        for(int count = 0; count < acnt; count++) {
             ammo[count].move();
+            enemyAmmo[count].move();
+        }
         for(int count = 0; count < ecnt; count++)
             enemyship[count].move();
     }
@@ -108,8 +113,10 @@ public class SpaceInvaders extends JPanel  {
         mainship.paint(g2d);
         for(int count = 0; count < ccnt; count++)
         { comet[count].paint(g2d); split[count].paint(g2d); }
-        for(int count = 0; count < acnt; count++) 
+        for(int count = 0; count < acnt; count++) {
             ammo[count].paint(g2d);
+            enemyAmmo[count].paint(g2d);
+        }
         for(int count = 0; count < ecnt; count++)
             enemyship[count].paint(g2d);
     }
