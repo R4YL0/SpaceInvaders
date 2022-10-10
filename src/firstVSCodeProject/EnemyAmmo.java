@@ -24,6 +24,7 @@ public class EnemyAmmo {
     }
 
 
+
     public void shoot(int x, int y) {
         x_now = x-3; y_now = y;
     }
@@ -33,10 +34,12 @@ public class EnemyAmmo {
 
     public Rectangle getBounds()
     { return new Rectangle(x_now,(int) y_now,7,7); }
+    public Rectangle getBoundsAmmo()
+    { return new Rectangle(x_now,(int) y_now,16,16); }
 
     public boolean collision1() {
         for(int count = 0; count < game.acnt ; count++) {
-            if(game.ammo[count].getBoundsAmmo().intersects(getBounds())) {
+            if(game.ammo[count].getBoundsAmmo().intersects(getBoundsAmmo())) {
                 game.ammo[count].x_now = 0; game.ammo[count].y_now = 0;
                 game.score.score(200);
                 return true;
