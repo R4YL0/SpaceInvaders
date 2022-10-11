@@ -7,7 +7,7 @@ package firstVSCodeProject;
 public class UI {
     SpaceInvaders game;
     public UI(SpaceInvaders game)
-        {this.game = game;} 
+    { this.game = game; }
     public void score(int point) {
         game.points += point;
         System.out.println("+ " + point + " Points.");

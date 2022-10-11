@@ -16,8 +16,8 @@ import javax.swing.JPanel;
 
 public class SpaceInvaders extends JPanel  {
     int acnt = 5;
-    int ccnt = 20;
-    int ecnt = 0;
+    int ccnt = 3;
+    int ecnt = 2;
     MainShip mainship;
     EnemyShip enemyship[] = new EnemyShip[ecnt];
     Comet[] comet = new Comet[ccnt];

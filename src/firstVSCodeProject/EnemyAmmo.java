@@ -18,9 +18,8 @@ public class EnemyAmmo {
             x_now = 600;
             y_now = 400;
         }
-        if(collision2()) {
+        if(collision2())
             game.gameOver();
-        }
     }
 
     public void shoot(int x, int y) {

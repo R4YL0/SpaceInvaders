@@ -27,9 +27,7 @@ public class EnemyShip {
         for(int i = 0; i<game.ecnt; i++) {
             if(this == game.enemyship[i]) {
                 if(collision3(i)) {
-                    x = (int) Math.floor(Math.random()*370+15);
-                    xPoints[0] = x; xPoints[1] = x-14; xPoints[2] = x-28; xPoints[3] = x;
-                    yPoints[0] = y; yPoints[1] = y+28; yPoints[2] = y; yPoints[3] = y;
+                    spawnEnemyShip();
                     checkIntersection();
                     return;
                 }
@@ -52,15 +50,13 @@ public class EnemyShip {
             }
         }
 
-        if(collision1()) {
+        if(collision1())
             spawnEnemyShip();
-        }
         if(collision2())
             game.gameOver();
 
-        if(yPoints[1]>575) {
+        if(yPoints[1]>575)
             spawnEnemyShip();
-        }
     }
 
     public void paint(Graphics2D g2d)

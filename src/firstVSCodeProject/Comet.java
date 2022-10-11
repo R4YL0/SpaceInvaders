@@ -22,15 +22,16 @@ public class Comet {
     { this.game = game;
         dx = Math.random() * 4 - 2;
         dy = Math.random() * 2 / Math.sqrt(game.ccnt) + 1;
-        checkIntersection();
+        checkIntersection(true);
     }
-    public void checkIntersection() {
+    public void checkIntersection(boolean yChange) {
         for(int i = 0; i<game.ccnt; i++) {
             if(this == game.comet[i]) {
                 if(collision3(i)) {
                     x = Math.floor(Math.random()*370+15);
-                    y = Math.floor(Math.random()*50 + 100);
-                    checkIntersection();
+                    if(yChange)
+                        y = Math.floor(Math.random()*50 + 100);
+                    checkIntersection(yChange);
                     return;
                 }
                 return;
@@ -44,17 +45,16 @@ public class Comet {
             x = Math.floor(Math.random()*370+15);
             y = -50;
             dx = 0; dy = 0;
-            checkIntersection();
-        }
-        else {
+            checkIntersection(false);
+        } else
             x = x+dx;
-        }
         y = y+dy;
 
         //Collision with MainShip
-        /*if(collision2()) {
+        if(collision2()) {
             game.gameOver();
-        }*/
+        }
+
         //Comet Collision with Comets
         if(collision3(game.ccnt)) {
             if(!game.comet[comCollInt].cometCollision && !cometCollision) {
@@ -71,19 +71,16 @@ public class Comet {
                         x += dx;
                     }
                 }
-                if(dx * game.comet[comCollInt].dx > 0) {
+                if(dx * game.comet[comCollInt].dx > 0)
                     game.comet[comCollInt].dx = -game.comet[comCollInt].dx;
-                }
                 cometCollision = true;
             } else if(cometCollision) {
-                if (y > game.comet[comCollInt].y) {
+                if (y > game.comet[comCollInt].y)
                     y += dy;
-                } else {
+                else
                     y -= dy;
-                }
-            } else {
+            } else
                 game.comet[comCollInt].cometCollision = false;
-            }
         }
 
 
@@ -103,6 +100,7 @@ public class Comet {
                 } else {
                     x = Math.floor(Math.random() * 370 + 15);
                     y = -50;
+                    checkIntersection(false);
                     dx = (Math.random() * 4 - 2) / Math.sqrt(2 * game.ccnt);
                 }
             }

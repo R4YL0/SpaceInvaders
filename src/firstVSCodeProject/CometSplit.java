@@ -24,8 +24,7 @@ public class CometSplit {
         if(collision1()) {
             x = -20; y = -20;
             dx = 0; dy = 0;
-        }
-        else
+        } else
             x = x+dx; y = y+dy;
         if(collision2())
             game.gameOver();

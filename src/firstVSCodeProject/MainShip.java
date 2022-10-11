@@ -34,7 +34,7 @@ public class MainShip {
     }
 
     public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_SHIFT || e.getKeyCode() == KeyEvent.VK_CONTROL)
+        if(e.getKeyCode() == KeyEvent.VK_SHIFT || e.getKeyCode() == KeyEvent.VK_CONTROL)
             speed = 2;
         if(e.getKeyCode() == KeyEvent.VK_LEFT && xPoints[0]>-10 && dx == -1)
             dx = 0;
