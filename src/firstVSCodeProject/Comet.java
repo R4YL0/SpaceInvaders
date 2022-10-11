@@ -39,29 +39,6 @@ public class Comet {
         }
     }
     public void move() {
-        //Comet Collision with Comets
-        if(collision3(game.ccnt)) {
-            if (Math.sqrt(Math.pow(x-game.comet[comCollInt].x, 2) + Math.pow(y-game.comet[comCollInt].y, 2)) < 30){
-                if (game.comet[comCollInt].dx * dx > 0 /*&& !game.comet[comCollInt].cometIntersect*/) {
-                    dx = -2*dx;
-                    cometCollision = true;
-                    cometIntersect = true;
-                }
-            }
-            else if (!cometCollision && !game.comet[comCollInt].cometCollision && (game.comet[comCollInt].dx * dx < 0 || y < game.comet[comCollInt].y)) {
-                dx = -dx;
-                cometCollision = true;
-                game.comet[comCollInt].dx = - game.comet[comCollInt].dx;
-            }
-        }
-        else if(cometCollision) {
-            if(cometIntersect) {
-                dx = dx/2;
-                cometIntersect = false;
-            }
-            cometCollision = false;
-        }
-
         //Collision with Ammo, Reset
         if(collision1()) {
             x = Math.floor(Math.random()*370+15);
@@ -75,9 +52,40 @@ public class Comet {
         y = y+dy;
 
         //Collision with MainShip
-        if(collision2()) {
+        /*if(collision2()) {
             game.gameOver();
+        }*/
+        //Comet Collision with Comets
+        if(collision3(game.ccnt)) {
+            if(!game.comet[comCollInt].cometCollision && !cometCollision) {
+                dx = -dx;
+                x += dx;
+                if(game.comet[comCollInt].getBounds().intersects(getBounds())) {
+                    if (y > game.comet[comCollInt].y) {
+                        x += dy;
+                        y += dy;
+                        x += dy;
+                    } else {
+                        x += dy;
+                        y -= dy;
+                        x += dx;
+                    }
+                }
+                if(dx * game.comet[comCollInt].dx > 0) {
+                    game.comet[comCollInt].dx = -game.comet[comCollInt].dx;
+                }
+                cometCollision = true;
+            } else if(cometCollision) {
+                if (y > game.comet[comCollInt].y) {
+                    y += dy;
+                } else {
+                    y -= dy;
+                }
+            } else {
+                game.comet[comCollInt].cometCollision = false;
+            }
         }
+
 
         // Comet Leaving Bounds
         if(x<-50) {
