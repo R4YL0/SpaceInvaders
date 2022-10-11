@@ -13,8 +13,9 @@ public class CometSplit {
     double dx = 0; double dy = 0;
     boolean split = false;
     boolean wait = false;
-    boolean splitColl;
+    //boolean splitColl;
     int spCollInt;
+    int comCollInt;
     SpaceInvaders game;
 
     public CometSplit(SpaceInvaders game)
@@ -30,9 +31,27 @@ public class CometSplit {
             game.gameOver();
 
         if(collision3(game.ccnt)) {
-            if (game.split[spCollInt].dx * dx < 0) {
-                dx = -dx;
+            dx = -dx;
+            if (game.split[spCollInt].dx * dx > 0) {
                 game.split[spCollInt].dx = -dx;
+            }
+        }
+        if(collision4(game.ccnt)) {
+            dx = -dx;
+            x += dx;
+            if(game.comet[comCollInt].getBounds().intersects(getBounds())) {
+                if (y > game.comet[comCollInt].y) {
+                    x += dy;
+                    y += dy;
+                    x += dy;
+                } else {
+                    x += dy;
+                    y -= dy;
+                    x += dx;
+                }
+            }
+            if (game.comet[comCollInt].dx * dx > 0) {
+                game.comet[comCollInt].dx = -dx;
             }
         }
 
@@ -84,6 +103,16 @@ public class CometSplit {
         for(int i = 0; i< k; i++) {
             if(game.split[i] != this && game.split[i].getBounds().intersects(getBounds())) {
                 spCollInt = i;
+                return true;
+            }
+        }
+        return false;
+    }
+    //split collision with Comet
+    public boolean collision4(int k) {
+        for(int i = 0; i< k; i++) {
+            if(game.comet[i].getBounds().intersects(getBounds())) {
+                comCollInt = i;
                 return true;
             }
         }
