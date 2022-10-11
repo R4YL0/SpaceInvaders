@@ -29,7 +29,7 @@ public class Ammo {
     { g2d.fillRect(x_now, y_now, 4, 15); } 
 
     public Rectangle getBounds()
-    { return new Rectangle(x_now,y_now,4,15); }
+    { return new Rectangle(x_now-2,y_now,8,15); }
     public Rectangle getBoundsAmmo()
     { return new Rectangle(x_now,y_now,16,16); }
 }

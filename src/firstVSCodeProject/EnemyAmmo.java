@@ -23,8 +23,6 @@ public class EnemyAmmo {
         }
     }
 
-
-
     public void shoot(int x, int y) {
         x_now = x-3; y_now = y;
     }
@@ -41,7 +39,6 @@ public class EnemyAmmo {
         for(int count = 0; count < game.acnt ; count++) {
             if(game.ammo[count].getBoundsAmmo().intersects(getBoundsAmmo())) {
                 game.ammo[count].x_now = 0; game.ammo[count].y_now = 0;
-                game.score.score(200);
                 return true;
             }
         }

@@ -62,16 +62,19 @@ public class Comet {
             cometCollision = false;
         }
 
+        //Collision with Ammo, Reset
         if(collision1()) {
             x = Math.floor(Math.random()*370+15);
             y = -50;
             dx = 0; dy = 0;
+            checkIntersection();
         }
         else {
             x = x+dx;
         }
         y = y+dy;
 
+        //Collision with MainShip
         if(collision2()) {
             game.gameOver();
         }
@@ -109,7 +112,7 @@ public class Comet {
     public void split() {
         if(split) {
             durchmesser = durchmesser/2;
-            dy = dy/2;
+            dy = dy/3;
             if(dx==0)
                 dx = Math.random();
             else 
@@ -141,6 +144,7 @@ public class Comet {
         cometSplit.wait = false;
     }
 
+    //JFrame & Hitbox
     public void paint(Graphics2D g2d)
     { g2d.fillOval((int)x, (int)y, durchmesser, durchmesser); }
     public Rectangle getBounds()
